@@ -1,0 +1,765 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+    width: 100vw;
+    background-color: #f7f9e3;
+    color: #303030;
+
+}
+
+/* mobile nav bar */
+
+.page-title {
+    position: absolute;
+    z-index: 1;
+    color: white;
+    text-transform: uppercase;
+    text-align: center;
+    font-weight: 400;
+    letter-spacing: 5px;
+    top: 40px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    
+}
+
+    /* Main menu positionning */
+    .main-nav {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        text-align: right;
+        opacity: 0;
+        z-index: -1;
+        visibility: hidden;
+        transition: all .375s;
+        height: 100vh;
+    }
+    
+    .main-nav.is-open {
+        opacity: 1;
+        z-index: 100;
+        visibility: visible;
+    }
+    
+    /* Yellow band effect */
+    .main-nav::before {
+         content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: -15px;
+        background: #748a5bec;
+        box-shadow: 1px 1px 40px 150px rgba(0,0,0,.3);
+        transform-origin: 0 0;
+        transform: skew(-14deg) translateX(-120%);
+        transition: all .275s .1s;
+    }
+    
+    .main-nav.is-open::before {
+        transform: skew(-14deg) translateX(0);
+    }
+    
+    /* Skewing effect on menu links */
+    .main-nav ul {
+        display: inline-flex;
+        flex-direction: column;
+        height: 90vh;
+        align-items: flex-end;
+        justify-content: center;
+        transform: translateX(-88%) skew(-16deg);
+    }
+    
+    .main-nav li {
+        display: block;
+        margin: .5rem 0;
+        text-align: center;
+        font-size: 27px;
+        transform: skew(16deg);
+    }
+    
+    /* Apparition effect on links */
+    .main-nav a {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    
+    .main-nav.is-open a {
+        opacity: 1;
+        transform: translateY(0);
+    }
+    .main-nav li:nth-child(1) a {
+        transition: all 275ms 175ms
+    }
+    .main-nav li:nth-child(2) a {
+        transition: all 275ms 225ms
+    }
+    .main-nav li:nth-child(3) a {
+        transition: all 275ms 275ms
+    }
+    .main-nav li:nth-child(4) a {
+        transition: all 275ms 325ms
+    }
+    .main-nav li:nth-child(5) a {
+        transition: all 275ms 375ms
+    }
+    
+    
+    /* Decoration */
+    .main-nav ul,
+    .main-nav li {
+        list-style: none;
+        padding: 0;
+    }
+    .main-nav a {
+        display: block;
+        padding: 12px 0;
+        color: white;
+        font-size: 1.4em;
+        text-decoration: none;
+        font-weight: bold;
+    }
+    
+    .open-main-nav {
+        position: absolute;
+        top: 15px;
+        padding-top: 20px;
+        right: 15px;
+        z-index: 1000;
+        background: none;
+        border: 0;
+        cursor: pointer;
+    }
+    .open-main-nav:focus {
+        outline: none;
+    }
+    .burger {
+        position: relative;
+        display: block;
+        width: 28px;
+        height: 4px;
+        margin: 0 auto;
+        background: white;
+        transform: skew(5deg);
+        transition: all .275s;
+    }
+    
+    .burger:after,
+    .burger:before {
+        content: '';
+        display: block;
+        height: 100%;
+        background: white;
+        transition: all .275s;
+    }
+    
+    .burger:after {
+        transform: translateY(-12px) translateX(-2px) skew(-20deg);
+    }
+    
+    .burger:before {
+        transform: translateY(-16px) skew(-10deg);
+    }
+    
+    /* Toggle State part */
+    .is-open .burger {
+        transform: skew(5deg) translateY(-8px) rotate(-45deg);
+    }
+    
+    .is-open .burger:before {
+        transform: translateY(0px) skew(-10deg) rotate(75deg);
+    }
+    
+    .is-open .burger:after {
+        transform: translateY(-12px) translateX(10px) skew(-20deg);
+        opacity: 0;
+    }
+    
+    /* MENU Text part */
+    
+    .burger-text {
+        display: block;
+        font-size: 6px;
+        letter-spacing: 5px;
+        margin-top: 10px;
+        text-transform: uppercase;
+        font-weight: 500;
+        text-align: center;
+        color: white;
+    }
+    
+    .device {
+        position: absolute;
+        width: 100vw;
+        overflow: hidden;
+        height: 100vh;
+        
+        box-shadow: 0 0 0 10px rgba(0,0,0,.1);
+    }
+    
+    .container {
+        position: absolute;
+        top: 0; right: 0;
+        bottom: 0; left: 0;
+        overflow: hidden;
+    }
+    
+    .nav-links-container {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        list-style: none;
+        
+    }
+    
+    .nav-links-container::before {
+        content: "";
+        border: 1px solid white;
+    }
+    
+    .nav-links-container .link-container i{
+        font-size: 30px;
+        margin-left: 35px;
+        list-style: none;
+
+    
+    
+    }
+    
+
+.nav-bg img {
+    height: 150px;
+    position:absolute;
+    top: 0;
+    width: 100vw;
+    
+}
+
+/* hero section */
+
+.parallax-hero-container {  
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 60px;
+}
+
+.hero-img {
+    position: absolute;
+    top: 10;
+    width: 90%;
+}
+
+.hero-background {
+    z-index: -1;
+}
+
+.hero-wine {
+    z-index: 0;
+}
+
+.hero-people {
+    z-index: 1;
+}
+
+.hero-overlay {
+    z-index: 1;
+}
+
+.hero-text {
+    z-index: 2;
+}
+/* separador */
+
+
+.separador img {
+    width: 100vw;
+}
+
+/* vineyard section */
+.vineyard-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+.vineyard-section-header {
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    
+
+}
+
+h2 {
+    font-size: 40px;
+    font-weight:500;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 13px;
+    padding: 20px 35px;
+    border: 1px solid #303030;
+
+
+}
+
+
+.vineyard-section-header h2 {
+   
+    z-index: 1;
+
+    
+}
+
+.uppertext {   
+    z-index: 1;
+    width: 250px;
+    padding-top: 40px;
+
+
+}
+
+
+.vineyard-section-header-cardboard {
+    width: 800px;
+    z-index: 0;
+}
+
+.section-bg {
+    
+    width: 93vw;
+    z-index: -1;
+    box-shadow: 8px 8px 50px #1c1f1949;
+
+    box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411);
+    -webkit-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411);
+    -moz-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411); 
+    margin-top: -50px;
+}
+
+
+/* text container */
+
+.section-text-container {
+    z-index: 1;
+    margin-top: -50px;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    background: #748a5bda;
+    border: 1px solid #748a5b;
+    box-shadow: 8px 8px 50px #1c1f1949;
+    -webkit-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411);
+    -moz-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411); 
+
+}
+
+.text-flex-container {
+    display: flex;
+    flex-direction: row;
+    padding: 30px;
+    position: relative;
+}
+
+
+.text-column-flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: stretch;
+    align-items: left;
+    padding: 20px;
+    border-top: 3px solid #fea900c4;
+
+}
+
+.highlight-text {
+    background-color: #feaa00;
+    padding: 30px;
+    font-weight: 600;
+    
+}
+
+.vineyard-section {
+    z-index: -2;
+}
+
+
+/* winemaking section */
+
+.winemaking-cardboard {
+    width: 1050px;
+    top: -150px;
+}
+
+.winemaking-text-container {
+    background-color: #882929c9;
+    color: white;
+    border: none;
+}
+
+
+/* terroir */
+
+
+.terroir-section {
+    
+    z-index: -2; 
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+.cardboard-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    line-height: 30px;
+    padding: 50px;
+    background:rgba(163, 74, 52, 0.445);
+    box-shadow: 8px 8px 50px #1c1f1949;
+    -webkit-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411);
+    -moz-box-shadow: 8px 8px 50px rgba(0, 0, 0, 0.411); 
+    background-image: url("/images/terroir.png");
+    background-size:300%;
+    background-position: 38%;
+
+    
+}
+.cardboard-text h2 {
+    
+    z-index: 2;
+    right: 160px;
+
+
+}
+.terroir-uppertext {
+    z-index: 2;
+    width: 150px;
+    margin-bottom: -20px;
+}
+
+/* wines section */
+
+#wines {
+    margin-top: 150px;
+}
+
+.wine-container {
+    display: flex;
+    overflow: hidden;
+    width: 100vw;
+}
+.wines-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 3;
+
+}
+.wines-uppertext {
+    width: 190px;
+    margin-bottom: -15px;
+}
+
+
+.text-container {
+    width: 40vw;
+    padding: 50px;
+    z-index: 3;
+
+}
+
+.big-number p{
+    font-size: 200px;
+    margin: 0;
+    border: 1px solid #303030;
+    padding-left: 20px;
+}
+.big-number {
+    border-left: 14px solid #303030;
+}
+
+.wine-text-flex-column {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: left;
+    width: 50vw;
+    z-index: 4;
+}
+
+.wine-text-flex-row {
+    display: flex;
+    flex-direction: row;
+}
+
+.wine-text-flex-row p {
+    padding: 20px;
+    margin: 0;
+    border: 1px dotted #303030
+}
+
+
+.wine-image-container img {
+    width: 80vw;
+    margin-left: -100px;
+    z-index:-1;
+}
+
+.wine-image-container {
+    width: 70vw;
+    z-index: -1;
+}
+
+h3 {
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+
+}
+
+.chardonnay {
+    background: rgba(255, 124, 63, 0.411);
+
+}
+
+.petit-verdot {
+    background: rgba(51, 114, 93, 0.445);
+
+}
+
+.estate {
+    background: rgba(136, 123, 67, 0.404);
+
+}
+
+.reserva {
+    background: rgba(74, 114, 126, 0.404);
+
+}
+
+
+
+/* footer */
+.contact-container {
+    position: relative;
+    display: inline-block;
+    
+}
+.contact-text-container {
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate( -50%, -50% );
+    text-align: center;
+    font-weight: bold;
+}
+
+.contact-text-container h4{
+    width: 40vw;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-bg {
+    width: 100vw; 
+    object-fit: cover;
+    top: 0;
+    z-index: -1;
+}
+
+footer {
+    margin: 0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+
+}
+
+
+
+.footer-links-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+    top: 110px;
+    left: 0;
+    right: 0;
+    width: 60vw; 
+
+}
+
+
+.link-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 25px;
+    
+}
+
+.link-container a {
+    color: white;
+    transition: 0.2s;
+}
+
+.link-container a:hover {
+    color: #feaa00;
+    transform: scale(1.05);
+
+
+}
+
+.link-container i {
+    font-size: 35px;
+    margin-right: 10px;
+
+
+    
+}
+
+
+.links-bg img {
+    height: 200px;
+    position:absolute;
+    top: 0;
+    width: 100vw;
+    z-index:-10;
+    
+}
+
+.copyright {
+    position: absolute;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    position:absolute;
+    top: 60px;
+    left: 0;
+    right: 0;
+    width: 60vw; 
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid white;
+}
+
+
+/* media queries */
+
+@media screen and (max-width: 768px) {
+
+
+    .nav-bg img {
+        height: 150px;
+        width:fit-content;
+    }
+
+    .main-nav ul {
+        transform: translateX(-68%) skew(-16deg)!important;
+    }
+
+    .main-nav li {
+        font-size: 20px!important;
+    }
+    
+
+    .parallax-hero-container {
+        height: 60vh;
+        top: 80px;
+    }
+
+    h1 {
+        font-size: 25px;
+    }
+
+    h2 {
+        font-size: 25px;
+        letter-spacing: 9px;
+        padding: 10px;
+    }
+
+    .text-flex-container {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .cardboard-text {
+        background-size: unset;
+        line-height: unset;
+    }
+
+    .wine-container {
+        flex-direction: column;
+    }
+
+    .text-container {
+        width: 90vw;
+        padding: 20px;
+    }
+
+    .wine-text-flex-column {
+        width: 80vw;
+    }
+
+    .wine-text-flex-column p {
+        margin-top: 0;
+    }
+
+    .wine-text-flex-column h4 {
+        margin-top: 0;
+    }
+    .wine-image-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+    }
+    .wine-image-container img {
+        
+        width: 230vw;
+        margin: 0;
+        z-index: 1;
+        
+    }
+
+    .footer-bg {
+        height: 80vh;
+    }
+
+    .contact-text-container h4 {
+        width: 70vw;
+    }
+
+
+    
+}
+
